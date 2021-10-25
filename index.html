@@ -7,18 +7,41 @@
     <title>Social posts</title>
 
     <link rel="stylesheet" href="./assets/css/style.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 </head>
 <body>
-    <header></header>
+    <header>
+        <h1>Social Posts</h1>
+    </header>
     <main class="container">
         <div class="card">
-            <div class="user"></div>
-            <div class="post">
-                <div class="quote"></div>
-                <div class="post_img"></div>
+            <div class="user">
+                <img src="https://picsum.photos/200" alt="user picture" width ="100%">
+                <div class="user_txt">
+                    <h4 class="username">Name Surname</h4>
+                    <div class="post_date">x months ago</div>
+                </div>
             </div>
-            <div class="like"></div>
+            <div class="post">
+                <div class="quote">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel modi voluptates, harum sunt tenetur unde quasi a vitae voluptate? Dolor amet voluptatem vel blanditiis. Minima, veniam magni. Tempore, doloribus exercitationem?</div>
+                <div class="post_img">
+                    <img src="https://picsum.photos/600/300" alt="" width ="100%">
+                </div>
+            </div>
+            <div class="likes">
+                <div class="like_cta">
+                    <button class="like_btn">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span>Mi piace</span>
+                    </button>
+                </div>
+                <div class="like_amount">
+                    Piace a <strong class="like_counter">XX</strong> persone
+                </div>
+            </div>
         </div>
+
     </main>
     <script src="./assets/js/main.js"></script>
 </body>
