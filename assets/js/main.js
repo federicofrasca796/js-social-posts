@@ -29,7 +29,7 @@ const posts = [
         quote: 'lorem ipsum sit amet consectetur, adipiscing elit.',
         image: 'https://picsum.photos/600/300',
         username: 'Daenerys Squais Targaryen',
-        avatar: 'https://picsum.photos/200',
+        avatar: '',
         date: '01/01/1991',
         likeCounter: 1
     },
@@ -47,7 +47,7 @@ const posts = [
         quote: 'lorem ipsum sit amet consectetur, adipiscing elit.',
         image: 'https://picsum.photos/600/300',
         username: 'Pablo Valerio Silva',
-        avatar: 'https://picsum.photos/200',
+        avatar: '',
         date: '01/01/1991',
         likeCounter: 2
     },
@@ -58,24 +58,35 @@ const posts = [
 
 const containerDiv = document.querySelector('.container');
 
-/* const cardDiv = document.createElement('div');
-cardDiv.className = 'card';
-
-const userDiv = document.createElement('div');
-userDiv.className = 'user';
-
-const userTxtDiv = document.createElement('div');
-userTxtDiv.className = 'user_txt'; */
 
 
 //add container innerHTML as html sample
 //substitute array objects properties.
 //iterate object's array to display every post
 for (const key in posts) {
+
+    //BONUS 2: add fallback icon in case it's missing from object
+    let avatarHTML = `<img src="${posts[key].avatar}" alt="user picture" width ="100%">`
+    let nameInitials = '';
+
+    if (posts[key].avatar == '' || posts[key].avatar == undefined){
+        //select username value and split each name
+        const userNameArr = posts[key].username.split(' ');
+        //select first letter of each name
+        for (let i = 0; i < userNameArr.length; i++) {
+            nameInitials += userNameArr[i].charAt(0);
+        }
+        //put initials in innerhtml
+        avatarHTML = `<div class="fallback_avatar">${nameInitials}</div>`
+        console.log(avatarHTML);
+    }
+    
+    /////////////////////////////////////
+    //add elements in DOM
     containerDiv.innerHTML += `
         <div class="card" data-post-id="${posts[key].id}">
             <div class="user">
-                <img src="${posts[key].avatar}" alt="user picture" width ="100%">
+                ${avatarHTML}
                 <div class="user_txt">
                     <h4 class="username">${posts[key].username}</h4>
                     <div class="post_date">${posts[key].date}<!-- x months ago --></div>
@@ -99,13 +110,11 @@ for (const key in posts) {
                 </div>
             </div>
         </div>
-    `
-    
-
+    ` 
 }
 
 
-//select every like button
+//select each like button
 const likeBtn = document.getElementsByClassName('like_btn');
 //select like_counter
 const likeCounter = document.getElementsByClassName('like_counter');
