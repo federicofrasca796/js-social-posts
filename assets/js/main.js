@@ -111,13 +111,13 @@ const likeBtn = document.getElementsByClassName('like_btn');
 const likeCounter = document.getElementsByClassName('like_counter');
 
 //initialize empty array to store liked posts' id.
-const likedId = [];
+let likedId = [];
 
 //add event listener to each like button
 for (let i = 0; i < likeBtn.length; i++) {
     const element = likeBtn[i];
     const counterClass = likeCounter[i];
-    
+    const id = posts[i].id;
     let clicksNum = 1;
     element.addEventListener('click', function(){  
         //condition if post's id is contained in liked post's array
@@ -134,8 +134,9 @@ for (let i = 0; i < likeBtn.length; i++) {
 
         } else {
             console.log('already liked');
-            //remove post's id from liked post's array
-            likedId.filter()
+            //remove post's id from liked post's array //THIS DOESN'T WORK
+            // likedId = likedId.filter(isIdThere(likedId, id));
+            // console.log(likedId);
             //change appearance to inactive
             this.classList.remove('liked');
 
@@ -154,6 +155,9 @@ for (let i = 0; i < likeBtn.length; i++) {
 // let likeCounter = 0;
 
 
-function isIdThere(){
-    
+function isIdThere(likedArray, currentId){
+    if(likedArray.includes(currentId)){
+        return false;
+    }
+    return true;
 }
