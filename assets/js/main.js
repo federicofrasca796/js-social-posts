@@ -53,8 +53,6 @@ const posts = [
     },
 ];
 
-const likedId = [];
-
 
 //DOM elements
 
@@ -105,13 +103,22 @@ for (const key in posts) {
     
 
 }
+
+
 //select every like button
 const likeBtn = document.getElementsByClassName('like_btn');
+//select like_counter
+const likeCounter = document.getElementsByClassName('like_counter');
+
+//initialize empty array to store liked posts' id.
+const likedId = [];
 
 //add event listener to each like button
 for (let i = 0; i < likeBtn.length; i++) {
     const element = likeBtn[i];
+    const counterClass = likeCounter[i];
     
+    let clicksNum = 1;
     element.addEventListener('click', function(){  
         //condition if post's id is contained in liked post's array
         if (!likedId.includes(posts[i].id)){
@@ -120,13 +127,26 @@ for (let i = 0; i < likeBtn.length; i++) {
             console.log(likedId);
             //change button appearance to active
             this.classList.add('liked');
-            //increase counter
+            //update value of counter in DOM
+            counterClass.innerHTML = posts[i].likeCounter + 1;
+            //update value in object list
+            posts[i].likeCounter += 1;
+
         } else {
             console.log('already liked');
             //remove post's id from liked post's array
+            likedId.filter()
             //change appearance to inactive
             this.classList.remove('liked');
-            //decrease counter
+
+            //allow to decrease likeCounter only once.
+            clicksNum--
+            if (clicksNum >= 0){
+                //update value in object list
+                posts[i].likeCounter -= 1;
+            }
+            //update value of counter in DOM
+            counterClass.innerHTML = posts[i].likeCounter;
         }
     })
 }
@@ -134,3 +154,6 @@ for (let i = 0; i < likeBtn.length; i++) {
 // let likeCounter = 0;
 
 
+function isIdThere(){
+    
+}
