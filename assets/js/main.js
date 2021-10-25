@@ -113,19 +113,21 @@ for (let i = 0; i < likeBtn.length; i++) {
     const element = likeBtn[i];
     
     element.addEventListener('click', function(){  
-        console.log('click');
         //condition if post's id is contained in liked post's array
-        // if (posts[key].id)
-            //change appearance to inactive
+        if (likedId.includes(posts[i].id)){
+            console.log('already liked');
             //remove post's id from liked post's array
+            //change appearance to inactive
             //decrease counter
-        
-        
-        //change button appearance to active
-    
-        //push post id inside liked post's array
-    
-        //increase counter
+        } else {
+            //push post id inside liked post's array
+            likedId.push(posts[i].id)
+            console.log(likedId);
+            //change button appearance to active
+            
+            //increase counter
+        }
+
     })
 }
 
