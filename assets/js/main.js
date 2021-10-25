@@ -72,33 +72,37 @@ userTxtDiv.className = 'user_txt'; */
 
 //add container innerHTML as html sample
 //substitute array objects properties.
-containerDiv.innerHTML += `
-    <div class="card">
-        <div class="user">
-            <img src="${posts[0].avatar}" alt="user picture" width ="100%">
-            <div class="user_txt">
-                <h4 class="username">${posts[0].username}</h4>
-                <div class="post_date">${posts[0].date}<!-- x months ago --></div>
+//iterate object's array to display every post
+for (const key in posts) {
+    containerDiv.innerHTML += `
+        <div class="card">
+            <div class="user">
+                <img src="${posts[key].avatar}" alt="user picture" width ="100%">
+                <div class="user_txt">
+                    <h4 class="username">${posts[key].username}</h4>
+                    <div class="post_date">${posts[key].date}<!-- x months ago --></div>
+                </div>
+            </div>
+            <div class="post">
+                <div class="quote">${posts[key].quote}</div>
+                <div class="post_img">
+                    <img src="${posts[key].image}" alt="" width ="100%">
+                </div>
+            </div>
+            <div class="likes">
+                <div class="like_cta">
+                    <button class="like_btn">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span>Mi piace</span>
+                    </button>
+                </div>
+                <div class="like_amount">
+                    Piace a <strong class="like_counter">${posts[key].likeCounter}</strong> persone
+                </div>
             </div>
         </div>
-        <div class="post">
-            <div class="quote">${posts[0].quote}</div>
-            <div class="post_img">
-                <img src="${posts[0].image}" alt="" width ="100%">
-            </div>
-        </div>
-        <div class="likes">
-            <div class="like_cta">
-                <button class="like_btn">
-                    <i class="fas fa-thumbs-up"></i>
-                    <span>Mi piace</span>
-                </button>
-            </div>
-            <div class="like_amount">
-                Piace a <strong class="like_counter">${posts[0].likeCounter}</strong> persone
-            </div>
-        </div>
-    </div>
-`
+    `
+
+}
 
 
