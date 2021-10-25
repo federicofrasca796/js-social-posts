@@ -13,7 +13,7 @@ const posts = [
         username: 'Phil Bevone',
         avatar: 'https://picsum.photos/200',
         date: '01/01/1991',
-        likeCounter: '0'
+        likeCounter: 0
     },
     {
         id: '1',
@@ -22,7 +22,7 @@ const posts = [
         username: 'Debbie Gallagher',
         avatar: 'https://picsum.photos/200',
         date: '01/01/1991',
-        likeCounter: '5'
+        likeCounter: 5
     },
     {
         id: '2',
@@ -31,7 +31,7 @@ const posts = [
         username: 'Daenerys Squais Targaryen',
         avatar: 'https://picsum.photos/200',
         date: '01/01/1991',
-        likeCounter: '1'
+        likeCounter: 1
     },
     {
         id: '3',
@@ -40,7 +40,7 @@ const posts = [
         username: 'Giuseppe Lopilato',
         avatar: 'https://picsum.photos/200',
         date: '01/01/1991',
-        likeCounter: '7'
+        likeCounter: 7
     },
     {
         id: '4',
@@ -49,11 +49,11 @@ const posts = [
         username: 'Pablo Valerio Silva',
         avatar: 'https://picsum.photos/200',
         date: '01/01/1991',
-        likeCounter: '2'
+        likeCounter: 2
     },
 ];
 
-const likedId = [0, 2, 3];
+const likedId = [];
 
 
 //DOM elements
@@ -75,7 +75,7 @@ userTxtDiv.className = 'user_txt'; */
 //iterate object's array to display every post
 for (const key in posts) {
     containerDiv.innerHTML += `
-        <div class="card">
+        <div class="card" data-post-id="${posts[key].id}">
             <div class="user">
                 <img src="${posts[key].avatar}" alt="user picture" width ="100%">
                 <div class="user_txt">
@@ -102,7 +102,33 @@ for (const key in posts) {
             </div>
         </div>
     `
+    
 
 }
+//select every like button
+const likeBtn = document.getElementsByClassName('like_btn');
+
+//add event listener to each like button
+for (let i = 0; i < likeBtn.length; i++) {
+    const element = likeBtn[i];
+    
+    element.addEventListener('click', function(){  
+        console.log('click');
+        //condition if post's id is contained in liked post's array
+        // if (posts[key].id)
+            //change appearance to inactive
+            //remove post's id from liked post's array
+            //decrease counter
+        
+        
+        //change button appearance to active
+    
+        //push post id inside liked post's array
+    
+        //increase counter
+    })
+}
+
+// let likeCounter = 0;
 
 
