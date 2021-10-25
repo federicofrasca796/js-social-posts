@@ -72,3 +72,7 @@ header{
     font-size: 1rem;
     margin-left: 1rem;
 }
+
+.like_btn.liked{
+    color: rgb(55, 134, 224);
+}
