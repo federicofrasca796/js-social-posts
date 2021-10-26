@@ -12,7 +12,7 @@ const posts = [
         image: 'https://picsum.photos/600/300',
         username: 'Phil Bevone',
         avatar: 'https://picsum.photos/200',
-        date: '01/01/1991',
+        date: new Date().toLocaleString('it'),
         likeCounter: 0
     },
     {
@@ -21,7 +21,7 @@ const posts = [
         image: 'https://picsum.photos/600/300',
         username: 'Debbie Gallagher',
         avatar: 'https://picsum.photos/200',
-        date: '01/01/1991',
+        date: new Date().toLocaleString('it'),
         likeCounter: 5
     },
     {
@@ -30,7 +30,7 @@ const posts = [
         image: 'https://picsum.photos/600/300',
         username: 'Daenerys Squais Targaryen',
         avatar: '',
-        date: '01/01/1991',
+        date: new Date().toLocaleString('it'),
         likeCounter: 1
     },
     {
@@ -39,7 +39,7 @@ const posts = [
         image: 'https://picsum.photos/600/300',
         username: 'Giuseppe Lopilato',
         avatar: 'https://picsum.photos/200',
-        date: '01/01/1991',
+        date: new Date().toLocaleString('it'),
         likeCounter: 7
     },
     {
@@ -48,7 +48,7 @@ const posts = [
         image: 'https://picsum.photos/600/300',
         username: 'Pablo Valerio Silva',
         avatar: '',
-        date: '01/01/1991',
+        date: new Date().toLocaleString('it'),
         likeCounter: 2
     },
 ];
