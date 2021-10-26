@@ -7,7 +7,7 @@ Un secondo array conterrà solo gli id dei posts a cui abbiamo dato like.
 
 const posts = [
     {
-        id: '0',
+        id: 0,
         quote: 'lorem ipsum sit amet consectetur, adipiscing elit.',
         image: 'https://picsum.photos/600/300',
         username: 'Phil Bevone',
@@ -16,7 +16,7 @@ const posts = [
         likeCounter: 0
     },
     {
-        id: '1',
+        id: 1,
         quote: 'lorem ipsum sit amet consectetur, adipiscing elit.',
         image: 'https://picsum.photos/600/300',
         username: 'Debbie Gallagher',
@@ -25,7 +25,7 @@ const posts = [
         likeCounter: 5
     },
     {
-        id: '2',
+        id: 2,
         quote: 'lorem ipsum sit amet consectetur, adipiscing elit.',
         image: 'https://picsum.photos/600/300',
         username: 'Daenerys Squais Targaryen',
@@ -34,7 +34,7 @@ const posts = [
         likeCounter: 1
     },
     {
-        id: '3',
+        id: 3,
         quote: 'lorem ipsum sit amet consectetur, adipiscing elit.',
         image: 'https://picsum.photos/600/300',
         username: 'Giuseppe Lopilato',
@@ -43,7 +43,7 @@ const posts = [
         likeCounter: 7
     },
     {
-        id: '4',
+        id: 4,
         quote: 'lorem ipsum sit amet consectetur, adipiscing elit.',
         image: 'https://picsum.photos/600/300',
         username: 'Pablo Valerio Silva',
@@ -60,8 +60,6 @@ const containerDiv = document.querySelector('.container');
 
 
 
-//add container innerHTML as html sample
-//substitute array objects properties.
 //iterate object's array to display every post
 for (const key in posts) {
 
@@ -78,10 +76,9 @@ for (const key in posts) {
         }
         //put initials in innerhtml
         avatarHTML = `<div class="fallback_avatar">${nameInitials}</div>`
-        console.log(avatarHTML);
     }
     
-    /////////////////////////////////////
+
     //add elements in DOM
     containerDiv.innerHTML += `
         <div class="card" data-post-id="${posts[key].id}">
@@ -128,11 +125,12 @@ for (let i = 0; i < likeBtn.length; i++) {
     const counterClass = likeCounter[i];
     const id = posts[i].id;
     let clicksNum = 1;
+
     element.addEventListener('click', function(){  
         //condition if post's id is contained in liked post's array
-        if (!likedId.includes(posts[i].id)){
+        if (!likedId.includes(id)){
             //push post id inside liked post's array
-            likedId.push(posts[i].id)
+            likedId.push(id)
             console.log(likedId);
             //change button appearance to active
             this.classList.add('liked');
@@ -141,11 +139,25 @@ for (let i = 0; i < likeBtn.length; i++) {
             //update value in object list
             posts[i].likeCounter += 1;
 
+
+            console.log(likedId.indexOf(id));
+
+
         } else {
-            console.log('already liked');
-            //remove post's id from liked post's array //THIS DOESN'T WORK
-            // likedId = likedId.filter(isIdThere(likedId, id));
-            // console.log(likedId);
+            // console.log('already liked');
+
+            //remove post's id from liked post's array 
+            
+                //THIS DOESN'T WORK
+                // likedId = likedId.filter(isIdThere(likedId, id));
+                // console.log(likedId);
+
+                //select current id position in liked post's array
+                const idIndex = likedId.indexOf(id);
+                //remove id from array
+                likedId.splice(idIndex, 1);
+
+            
             //change appearance to inactive
             this.classList.remove('liked');
 
@@ -160,8 +172,6 @@ for (let i = 0; i < likeBtn.length; i++) {
         }
     })
 }
-
-// let likeCounter = 0;
 
 
 function isIdThere(likedArray, currentId){
